@@ -13,5 +13,7 @@ func Slice () {
 	fmt.Printf("slice1的值:%v\n",slice1)
 	slice1 = slice1[0:5]
 	fmt.Printf("slice1的值:%v\n",slice1)
+	slice1[0] = 100
+	fmt.Printf("slice1的值:%v\n",slice1)
 
 }
