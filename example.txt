@@ -1,0 +1,9 @@
+第一行 0123456789
+第二行 abcdefghijkl
+第三行 mnopqrstuvwxyz
+第四行 ABCDEFGHIJKL
+第五行 MNOPQRSTUVWXYZ
+第六行 .,?!'"()[]{}:;/hello world
+hello world
+第七行 使用file.WriteString进行写入
+第八行 使用file.Write进行写入操作
