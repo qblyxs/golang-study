@@ -4,23 +4,22 @@ import (
 	"fmt"
 	"strconv"
 	"time"
-	// "sync"
+	"sync"
 )
 
 func main() {
-
+	// 创建一个goroutine,去执行test()
 	go test()
-
+	// 创建一个匿名的goroutine,去执行匿名函数
 	go func() {
 		fmt.Println("我是一个匿名函数,我被go关键字执行了")
 	}()	
-
+	// 主函数中的代码
 	for i := 0; i <= 10; i++ {
 		fmt.Println("main()函数中的i:", strconv.Itoa(i))
-		// time.Sleep(1 * time.Second)
+		time.Sleep(1 * time.Second)
 	}
-	time.Sleep(2 * time.Second)
-	// WaitG()
+	WaitG()
 }
 
 func test() {
@@ -30,17 +29,17 @@ func test() {
 	}
 }
 
-// func WaitG () {
-// 	var wg sync.WaitGroup // 创建一个同步等待的组
-// 	for i := 0; i <= 10; i++ {
-// 		wg.Add(1) // 计数器+1
-// 		go func (i int) {
-// 			defer wg.Done() // 计数器-1
-// 			fmt.Println("WaitG()中匿名函数协程的i:", i)
-// 		}(i)
-// 	}
-// 	wg.Wait() // 等待计数器变为0
-// }
+func WaitG () {
+	var wg sync.WaitGroup
+	for i := 0; i <= 10; i++ {
+		wg.Add(1) // 计数器+1
+		go func (i int) {
+			defer wg.Done() // 计数器-1
+			fmt.Println("WaitG()函数中协程的i:", i)
+		}(i)
+	}
+	wg.Wait() // 等待计数器变为0
+}
 
 
 /*
